@@ -54,5 +54,6 @@ jobs:
 
     - name: Build AppImage
       working-directory: ${HOME}/app
-      shell: bash
-      run: ls
+      run: |
+        pwd
+        ls -l
