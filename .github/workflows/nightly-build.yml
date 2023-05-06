@@ -7,7 +7,8 @@ env:
   BUILD_TYPE: Release
   LANG: en_US.UTF-8
   LS_ALL: en_US.UTF-8
-  LANGUAGE: en_US:en  
+  LANGUAGE: en_US:en
+  PROGRAMS: alacenc faac flac lame mac oggenc opusenc sox ttaenc wavpack wvunpack
 
 jobs:
   build:
@@ -31,29 +32,52 @@ jobs:
     - name: Clone tools
       run: git clone https://github.com/SokoloffA/nightly-tools.git ~/tools
 
+    - name: Test
+      run: |        
+        ls -l ~
+        ls -l ~/tools
+
+    # - name: Create Build Environment
+    #   run: |
+    #     mkdir -p ${{github.workspace}}/build
+    #     mkdir -p ${{github.workspace}}/build/app
+
     - name: Create Build Environment
       run: |
         cmake -E make_directory ${{github.workspace}}/build
-        cmake -E make_directory ${HOME}/app
+        cmake -E make_directory ${{github.workspace}}/build/app
 
     - name: Run CMake
       shell: bash
       working-directory: ${{github.workspace}}/build
-      run: cmake -DCMAKE_INSTALL_PREFIX=${HOME}/app/usr -DAPPIMAGE_BUNDLE=Yes -DCMAKE_BUILD_TYPE=$BUILD_TYPE $GITHUB_WORKSPACE
+      run: cmake -DCMAKE_INSTALL_PREFIX=${{github.workspace}}/build/app/usr -DAPPIMAGE_BUNDLE=Yes -DCMAKE_BUILD_TYPE=$BUILD_TYPE $GITHUB_WORKSPACE
 
-    - name: Build
+    - name: Build Flacon
       working-directory: ${{github.workspace}}/build
       shell: bash
       run: make -j 8
 
-    - name: Install
+    - name: Install Flacon
       working-directory: ${{github.workspace}}/build
       shell: bash
       run: make install
 
-
     - name: Build AppImage
-      working-directory: ${HOME}/app
-      run: |
+      working-directory: ${{github.workspace}}/build/app
+      run: |        
+        echo "==============================="
+        ls -l ~/tools
+        echo "-------------------------------"
         pwd
-        ls -l
+        echo "-------------------------------"
+        ls -l 
+        echo "==============================="
+        ln -sf usr/bin/flacon AppRun
+        ln -sf usr/share/icons/hicolor/128x128/apps/flacon.png .
+        ln -sf usr/share/applications/flacon.desktop .
+        echo "==============================="
+        for prog in ${PROGRAMS}; do echo " * Copy ${prog}"; src=$(which "$prog"); dest=${src#/}; cp -f "${src}" "usr/bin/"; done
+        echo "==============================="
+        ~/tools/appimage/usr/bin/linuxdeploy --verbosity=3  --plugin qt --appdir "${{github.workspace}}/build/app"
+        echo "==============================="        
+        ~/tools/appimage/usr/bin/appimagetool "${{github.workspace}}/build/app" "${{github.workspace}}/build/flacon-nightly-x86_64.AppImage"
