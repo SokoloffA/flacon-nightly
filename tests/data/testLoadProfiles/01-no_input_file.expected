@@ -1,0 +1,155 @@
+[Profiles/AAC]
+    OutDirectory=:Music
+    OutPattern=%a/{%y - }%A/%n - %t
+    Format=AAC
+    Name=AAC
+    Bitrate=256
+    Quality=100
+    UseQuality=true
+    BitsPerSample=0
+    SampleRate=0
+    CreateCue=false
+    CueFileName = %a-%A.cue
+    PregapType = Extract
+    CoverFile/Mode=Disable
+    CoverFile/Size=1024
+    CoverEmbed/Mode=Disable
+    CoverEmbed/Size=1024
+    EmbedCue=false
+    ReplayGain=Disable
+
+[Profiles/FLAC]
+    OutDirectory=:Music
+    OutPattern=%a/{%y - }%A/%n - %t
+    Format = FLAC
+    Name = FLAC
+    Compression=5
+    ReplayGain=Disable
+    BitsPerSample=0
+    SampleRate=0
+    CreateCue=false
+    CueFileName = %a-%A.cue
+    PregapType = Extract
+    CoverFile/Mode=Disable
+    CoverFile/Size=1024
+    CoverEmbed/Mode=Disable
+    CoverEmbed/Size=1024
+    EmbedCue=false
+
+
+[Profiles/MP3]
+    OutDirectory=:Music
+    OutPattern=%a/{%y - }%A/%n - %t
+    Format = MP3
+    Name = MP3
+    Bitrate=320
+    Preset=vbrStandard
+    Quality=4
+    ReplayGain=Disable
+    BitsPerSample=0
+    SampleRate=0
+    CreateCue=false
+    CueFileName = %a-%A.cue
+    PregapType = Extract
+    CoverFile/Mode=Disable
+    CoverFile/Size=1024
+    CoverEmbed/Mode=Disable
+    CoverEmbed/Size=1024
+    EmbedCue=false
+
+
+[Profiles/OGG]
+    OutDirectory=:Music
+    OutPattern=%a/{%y - }%A/%n - %t
+    Format = OGG
+    Name = OGG
+    MaxBitrate=
+    MinBitrate=
+    NormBitrate=
+    Quality=7
+    ReplayGain=Disable
+    UseQuality=true
+    BitsPerSample=0
+    SampleRate=0
+    CreateCue=false
+    CueFileName = %a-%A.cue
+    PregapType = Extract
+    CoverFile/Mode=Disable
+    CoverFile/Size=1024
+    CoverEmbed/Mode=Disable
+    CoverEmbed/Size=1024
+    EmbedCue=false
+
+
+[Profiles/OPUS]
+    OutDirectory=:Music
+    OutPattern=%a/{%y - }%A/%n - %t
+    Name = Opus
+    Format = OPUS
+    Bitrate=96
+    BitrateType=VBR
+    BitsPerSample=0
+    SampleRate=0
+    CreateCue=false
+    CueFileName = %a-%A.cue
+    PregapType = Extract
+    CoverFile/Mode=Disable
+    CoverFile/Size=1024
+    CoverEmbed/Mode=Disable
+    CoverEmbed/Size=1024
+    EmbedCue=false
+    ReplayGain=Disable
+
+
+[Profiles/WV]
+    OutDirectory=:Music
+    OutPattern=%a/{%y - }%A/%n - %t
+    Name = WavPack
+    Format = WV
+    Compression=1
+    ReplayGain=Disable
+    BitsPerSample=0
+    SampleRate=0
+    CreateCue=false
+    CueFileName = %a-%A.cue
+    PregapType = Extract
+    CoverFile/Mode=Disable
+    CoverFile/Size=1024
+    CoverEmbed/Mode=Disable
+    CoverEmbed/Size=1024
+    EmbedCue=false
+
+
+[Profiles/WAV]
+    OutDirectory=:Music
+    OutPattern=%a/{%y - }%A/%n - %t
+    Format=WAV
+    Name=WAV
+    BitsPerSample=0
+    SampleRate=0
+    CreateCue=false
+    CueFileName = %a-%A.cue
+    PregapType = Extract
+    CoverFile/Mode=Disable
+    CoverFile/Size=1024
+    EmbedCue=false
+    ReplayGain=Disable
+
+
+[Profiles/ALAC]
+    BitsPerSample=0
+    Compression=0
+    CoverFile\Mode=Disable
+    CoverFile\Size=1024
+    CreateCue=false
+    CueFileName=%a-%A.cue
+    Format=ALAC
+    Name=ALAC
+    OutDirectory=:Music
+    OutPattern=%a/{%y - }%A/%n - %t
+    PregapType=Extract
+    SampleRate=0
+    CoverEmbed/Mode=Disable
+    CoverEmbed/Size=1024
+    EmbedCue=false
+    ReplayGain=Disable

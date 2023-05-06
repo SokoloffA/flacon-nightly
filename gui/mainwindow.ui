@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>651</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Flacon</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QWidget" name="layoutWidget">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QGroupBox" name="outFilesBox">
+          <property name="title">
+           <string>Result Files</string>
+          </property>
+          <layout class="QGridLayout" name="formLayout_2">
+           <item row="0" column="0">
+            <widget class="QLabel" name="outDirLabel">
+             <property name="text">
+              <string>Directory:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <item>
+              <widget class="OutDirComboBox" name="outDirEdit">
+               <property name="toolTip">
+                <string comment="Main form tooltip for &quot;Directory&quot; edit">You can browse to the destination directory. You can also input it manually.
+
+If the path is left empty or starts with &quot;.&quot; (dot), the result files will be placed in the same directory as the source.</string>
+               </property>
+               <property name="editable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="OutDirButton" name="outDirButton">
+               <property name="text">
+                <string notr="true">*</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="outPatternEditLabel">
+             <property name="text">
+              <string>Pattern:</string>
+             </property>
+             <property name="buddy">
+              <cstring>outPatternEdit</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <layout class="QHBoxLayout" name="horizontalLayout_6">
+             <item>
+              <widget class="HistoryComboBox" name="outPatternEdit">
+               <property name="toolTip">
+                <string comment="Main form tooltip for &quot;Pattern&quot; edit">&lt;style type=&quot;text/css&quot;&gt;
+.term {font-weight: bold;}
+.def  { white-space: nowrap; }
+&lt;/style&gt;
+Tokens start with %. You can use the following tokens:
+&lt;table&gt;
+&lt;tr&gt;&lt;td class=&quot;term&quot;&gt;%n&lt;/td&gt; &lt;td class=&quot;def&quot;&gt; - Track number  &lt;/td&gt;
+        &lt;td class=&quot;term&quot;&gt;%N&lt;/td&gt; &lt;td class=&quot;def&quot;&gt; - Total number of tracks&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;term&quot;&gt;%a&lt;/td&gt; &lt;td class=&quot;def&quot;&gt; - Artist&lt;/td&gt;
+        &lt;td class=&quot;term&quot;&gt;%A&lt;/td&gt; &lt;td class=&quot;def&quot;&gt; - Album title&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;term&quot;&gt;%t&lt;/td&gt; &lt;td class=&quot;def&quot;&gt; - Track title&lt;/td&gt;
+        &lt;td class=&quot;term&quot;&gt;%y&lt;/td&gt; &lt;td class=&quot;def&quot;&gt; - Year&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td class=&quot;term&quot;&gt;%g&lt;/td&gt; &lt;td class=&quot;def&quot;&gt; - Genre&lt;/td&gt;
+        &lt;td class=&quot;term&quot;&gt;&lt;/td&gt; &lt;td class=&quot;def&quot;&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;br&gt;&lt;br&gt;
+If you surround sections of text that contain a token with braces, these sections will be hidden if the token is empty.</string>
+               </property>
+               <property name="editable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="OutPatternButton" name="outPatternButton">
+               <property name="text">
+                <string notr="true">*</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="outProfileLabel">
+             <property name="text">
+              <string>Format:</string>
+             </property>
+             <property name="buddy">
+              <cstring>outProfileCombo</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <item>
+              <widget class="QComboBox" name="outProfileCombo">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="toolTip">
+                <string comment="Main form tooltip for &quot;Format&quot; edit">Output format</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="ToolButton" name="configureProfileBtn">
+               <property name="text">
+                <string notr="true">*</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="tagsBox">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="title">
+           <string>Tags</string>
+          </property>
+          <layout class="QGridLayout" name="formLayout">
+           <item row="3" column="0">
+            <widget class="QLabel" name="tagDiscPerformerLabel">
+             <property name="text">
+              <string>Album performer:</string>
+             </property>
+             <property name="buddy">
+              <cstring>tagDiscPerformerEdit</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="1" colspan="2">
+            <widget class="CodePageComboBox" name="codepageCombo"/>
+           </item>
+           <item row="3" column="1" colspan="2">
+            <widget class="TagLineEdit" name="tagDiscPerformerEdit"/>
+           </item>
+           <item row="7" column="1" colspan="2">
+            <widget class="TagLineEdit" name="tagDiscIdEdit">
+             <property name="readOnly">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="tagStartNumEditLabel">
+             <property name="toolTip">
+              <string/>
+             </property>
+             <property name="text">
+              <string>Start num:</string>
+             </property>
+             <property name="buddy">
+              <cstring>tagStartNumEdit</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1" colspan="2">
+            <widget class="TagLineEdit" name="tagAlbumEdit"/>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="tagDiscIdEditLabel">
+             <property name="text">
+              <string>Disc ID:</string>
+             </property>
+             <property name="buddy">
+              <cstring>tagDiscIdEdit</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1" colspan="2">
+            <widget class="TagLineEdit" name="tagGenreEdit"/>
+           </item>
+           <item row="1" column="1" colspan="2">
+            <widget class="TagLineEdit" name="tagYearEdit">
+             <property name="minimum" stdset="0">
+              <number>1900</number>
+             </property>
+             <property name="maximum" stdset="0">
+              <number>3000</number>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="tagGenreEditLabel">
+             <property name="text">
+              <string>Genre:</string>
+             </property>
+             <property name="buddy">
+              <cstring>tagGenreEdit</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1" colspan="2">
+            <widget class="MultiValuesSpinBox" name="tagStartNumEdit">
+             <property name="minimum">
+              <number>1</number>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="tagArtistEditLabel">
+             <property name="text">
+              <string>Artist:</string>
+             </property>
+             <property name="buddy">
+              <cstring>tagArtistEdit</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="0">
+            <widget class="QLabel" name="codepageComboLabel">
+             <property name="text">
+              <string>Codepage:</string>
+             </property>
+             <property name="buddy">
+              <cstring>codepageCombo</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="tagYearEditLabel">
+             <property name="text">
+              <string>Year:</string>
+             </property>
+             <property name="buddy">
+              <cstring>tagYearEdit</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1" colspan="2">
+            <widget class="TagLineEdit" name="tagArtistEdit"/>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="tagAlbumEditLabel">
+             <property name="text">
+              <string>Album:</string>
+             </property>
+             <property name="buddy">
+              <cstring>tagAlbumEdit</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="2">
+            <widget class="QPushButton" name="editTagsButton">
+             <property name="text">
+              <string comment="Button text">Edit all tags…</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="TrackView" name="trackView">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>1</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="tabKeyNavigation">
+        <bool>true</bool>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::ExtendedSelection</enum>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
+       </property>
+       <property name="rootIsDecorated">
+        <bool>true</bool>
+       </property>
+       <property name="itemsExpandable">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="actionAddDisc"/>
+    <addaction name="actionAddFolder"/>
+    <addaction name="actionRemoveDisc"/>
+    <addaction name="separator"/>
+    <addaction name="actionRemoveSourceFiles"/>
+    <addaction name="separator"/>
+    <addaction name="actionDownloadTrackInfo"/>
+    <addaction name="separator"/>
+    <addaction name="actionStartConvert"/>
+    <addaction name="actionStartConvertSelected"/>
+    <addaction name="actionAbortConvert"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menu_Settings">
+    <property name="title">
+     <string>&amp;Settings</string>
+    </property>
+    <addaction name="actionUpdates"/>
+    <addaction name="actionConfigure"/>
+   </widget>
+   <widget class="QMenu" name="menu_Help">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menu_Settings"/>
+   <addaction name="menu_Help"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="windowTitle">
+    <string notr="true">toolBar</string>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="floatable">
+    <bool>false</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionAddDisc"/>
+   <addaction name="actionRemoveDisc"/>
+   <addaction name="separator"/>
+   <addaction name="actionAddFolder"/>
+   <addaction name="separator"/>
+   <addaction name="actionDownloadTrackInfo"/>
+   <addaction name="separator"/>
+   <addaction name="actionStartConvert"/>
+   <addaction name="actionAbortConvert"/>
+  </widget>
+  <action name="actionAddDisc">
+   <property name="text">
+    <string comment="Main menu item">Add disc…</string>
+   </property>
+   <property name="iconText">
+    <string comment="Toolbar item">Add disc</string>
+   </property>
+   <property name="toolTip">
+    <string>Add CUE or audio file</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionStartConvert">
+   <property name="text">
+    <string>Convert</string>
+   </property>
+   <property name="toolTip">
+    <string>Start conversion process</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+  </action>
+  <action name="actionAbortConvert">
+   <property name="text">
+    <string>Abort</string>
+   </property>
+   <property name="toolTip">
+    <string>Abort conversion process</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionConfigure">
+   <property name="text">
+    <string>Preferences</string>
+   </property>
+   <property name="toolTip">
+    <string>Program preferences</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About Flacon</string>
+   </property>
+  </action>
+  <action name="actionRemoveDisc">
+   <property name="text">
+    <string>Remove disc</string>
+   </property>
+   <property name="toolTip">
+    <string>Remove disc from project</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Del</string>
+   </property>
+  </action>
+  <action name="actionConfigureEncoder">
+   <property name="text">
+    <string>Configure encoder</string>
+   </property>
+   <property name="toolTip">
+    <string>Configure encoder</string>
+   </property>
+  </action>
+  <action name="actionDownloadTrackInfo">
+   <property name="text">
+    <string>Get from Internet</string>
+   </property>
+   <property name="toolTip">
+    <string>Get album information from Internet</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="actionAddFolder">
+   <property name="text">
+    <string comment="Main menu item">Add folder…</string>
+   </property>
+   <property name="iconText">
+    <string comment="Toolbar item">Add folder</string>
+   </property>
+   <property name="toolTip">
+    <string>Recursive album search</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+O</string>
+   </property>
+  </action>
+  <action name="actionUpdates">
+   <property name="text">
+    <string>Check for Updates…</string>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::ApplicationSpecificRole</enum>
+   </property>
+  </action>
+  <action name="actionStartConvertSelected">
+   <property name="text">
+    <string extracomment="Main menu item">Convert selected</string>
+   </property>
+   <property name="toolTip">
+    <string extracomment="Main menu item tooltip">Start conversion process for the selected tracks</string>
+   </property>
+   <property name="shortcut">
+    <string extracomment="Main menu item shortcut">Ctrl+Shift+W</string>
+   </property>
+  </action>
+  <action name="actionWarnings">
+   <property name="text">
+    <string extracomment="Toolbar item caption">Warnings</string>
+   </property>
+   <property name="toolTip">
+    <string extracomment="Toolbar item tooltip">Show Warnings</string>
+   </property>
+  </action>
+  <action name="actionErrors">
+   <property name="text">
+    <string comment="Toolbar item caption" extracomment="Toolbar item caption">Errors</string>
+   </property>
+   <property name="toolTip">
+    <string comment="Toolbar item tooltip" extracomment="Toolbar item tooltip">Show Errors</string>
+   </property>
+  </action>
+  <action name="actionRemoveSourceFiles">
+   <property name="text">
+    <string>Trash Sources for successfully converted disks and Remove from list…</string>
+   </property>
+   <property name="toolTip">
+    <string>Trash sources for converted disks and remove from list…</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>OutPatternButton</class>
+   <extends>QToolButton</extends>
+   <header>controls.h</header>
+  </customwidget>
+  <customwidget>
+   <class>OutDirButton</class>
+   <extends>QToolButton</extends>
+   <header>controls.h</header>
+  </customwidget>
+  <customwidget>
+   <class>HistoryComboBox</class>
+   <extends>QComboBox</extends>
+   <header>controls.h</header>
+  </customwidget>
+  <customwidget>
+   <class>CodePageComboBox</class>
+   <extends>QComboBox</extends>
+   <header>controls.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TrackView</class>
+   <extends>QTreeView</extends>
+   <header>trackview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>MultiValuesSpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>controls.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TagLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>controls.h</header>
+  </customwidget>
+  <customwidget>
+   <class>OutDirComboBox</class>
+   <extends>QComboBox</extends>
+   <header>controls.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ToolButton</class>
+   <extends>QToolButton</extends>
+   <header>controls.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>outDirEdit</tabstop>
+  <tabstop>outDirButton</tabstop>
+  <tabstop>outPatternEdit</tabstop>
+  <tabstop>outPatternButton</tabstop>
+  <tabstop>outProfileCombo</tabstop>
+  <tabstop>configureProfileBtn</tabstop>
+  <tabstop>tagGenreEdit</tabstop>
+  <tabstop>tagYearEdit</tabstop>
+  <tabstop>tagArtistEdit</tabstop>
+  <tabstop>tagDiscPerformerEdit</tabstop>
+  <tabstop>tagAlbumEdit</tabstop>
+  <tabstop>tagStartNumEdit</tabstop>
+  <tabstop>tagDiscIdEdit</tabstop>
+  <tabstop>codepageCombo</tabstop>
+  <tabstop>trackView</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>actionExit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
