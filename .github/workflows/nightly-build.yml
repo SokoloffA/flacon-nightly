@@ -9,7 +9,6 @@ env:
   LS_ALL: en_US.UTF-8
   LANGUAGE: en_US:en
   PROGRAMS: alacenc faac flac lame mac oggenc opusenc sox ttaenc wavpack wvunpack
-  IMAGE_NAME: flacon-x86_64.AppImage
 
 jobs:
   build:
@@ -67,10 +66,10 @@ jobs:
         for prog in ${PROGRAMS}; do echo " * Copy ${prog}"; src=$(which "$prog"); dest=${src#/}; cp -f "${src}" "usr/bin/"; done
         echo "= Build image ================="
         linuxdeploy --verbosity=3  --plugin qt --appdir "${{github.workspace}}/build/app"
-        appimagetool "${{github.workspace}}/build/app" "${{github.workspace}}/build/${IMAGE_NAME}"
+        appimagetool "${{github.workspace}}/build/app" "${{github.workspace}}/build/flacon-x86_64.AppImage"
 
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
-        name: ${IMAGE_NAME}
-        path: "${{github.workspace}}/build/${IMAGE_NAME}"
+        name: flacon-x86_64.AppImage
+        path: "${{github.workspace}}/build/flacon-x86_64.AppImage"
