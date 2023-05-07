@@ -9,6 +9,7 @@ env:
   LS_ALL: en_US.UTF-8
   LANGUAGE: en_US:en
   PROGRAMS: alacenc faac flac lame mac oggenc opusenc sox ttaenc wavpack wvunpack
+  IMAGE_NAME: flacon-x86_64.AppImage
 
 jobs:
   build:
@@ -30,17 +31,7 @@ jobs:
         sudo apt-get -y install flac mac alacenc vorbis-tools wavpack lame ttaenc faac opus-tools sox
 
     - name: Clone tools
-      run: git clone https://github.com/SokoloffA/nightly-tools.git ~/tools
-
-    - name: Test
-      run: |        
-        ls -l ~
-        ls -l ~/tools
-
-    # - name: Create Build Environment
-    #   run: |
-    #     mkdir -p ${{github.workspace}}/build
-    #     mkdir -p ${{github.workspace}}/build/app
+      run: git clone --depth 1 https://github.com/SokoloffA/nightly-tools.git ~/tools
 
     - name: Create Build Environment
       run: |
@@ -66,18 +57,20 @@ jobs:
       working-directory: ${{github.workspace}}/build/app
       run: |        
         echo "==============================="
-        ls -l ~/tools
-        echo "-------------------------------"
-        pwd
-        echo "-------------------------------"
-        ls -l 
-        echo "==============================="
+        export PATH=~/tools/appimage/usr/bin:$PATH
+        export LD_LIBRARY_PATH=~/tools/appimage/usr/lib
+        echo "= Create symlinks ============="
         ln -sf usr/bin/flacon AppRun
         ln -sf usr/share/icons/hicolor/128x128/apps/flacon.png .
         ln -sf usr/share/applications/flacon.desktop .
-        echo "==============================="
+        echo "= Add programs ================"
         for prog in ${PROGRAMS}; do echo " * Copy ${prog}"; src=$(which "$prog"); dest=${src#/}; cp -f "${src}" "usr/bin/"; done
-        echo "==============================="
-        ~/tools/appimage/usr/bin/linuxdeploy --verbosity=3  --plugin qt --appdir "${{github.workspace}}/build/app"
-        echo "==============================="        
-        ~/tools/appimage/usr/bin/appimagetool "${{github.workspace}}/build/app" "${{github.workspace}}/build/flacon-nightly-x86_64.AppImage"
+        echo "= Build image ================="
+        linuxdeploy --verbosity=3  --plugin qt --appdir "${{github.workspace}}/build/app"
+        appimagetool "${{github.workspace}}/build/app" "${{github.workspace}}/build/${IMAGE_NAME}"
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: ${IMAGE_NAME}
+        path: "${{github.workspace}}/build/${IMAGE_NAME}"
